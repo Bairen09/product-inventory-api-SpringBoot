@@ -1,7 +1,8 @@
 package com.practice.product_inventory_api;
 
 import jakarta.persistence.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Min;
 
 @Entity
 @Table(name = "Product-Inventory")
@@ -9,9 +10,10 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-//    @NotNull(message= "Name can not be null")
+    @NotNull(message= "Name can not be null")
     private String name;
     private double price;
+    @Min(value=0)
     private int stock;
 
     public Long getId() {
